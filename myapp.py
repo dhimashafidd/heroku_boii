@@ -37,12 +37,12 @@ indonesia_case = ColumnDataSource(indonesia)
 
 # Definisikan figure untuk dijadikan sebagai plot diagram
 tot_case_ind = figure(x_axis_type='datetime',
-                      plot_height=500, plot_width=800,
+                      plot_height=600, plot_width=900,
                       title='Total Kasus Covid',
                       x_axis_label='Tanggal', y_axis_label='Total Kasus')
 
 new_case_ind = figure(x_axis_type='datetime',
-                      plot_height=500, plot_width=800,
+                      plot_height=600, plot_width=900,
                       title='Kasus Baru',
                       x_axis_label='Tanggal', y_axis_label='Kasus Baru')
 
@@ -89,7 +89,7 @@ new_case_ind.add_tools(HoverTool(tooltips=tooltips2, formatters={
                        '@Date': 'datetime'}, renderers=[hover_glyph, hover_glyph2]))
 
 # Konfigurasi ukuran plot / diagram
-tot_case_ind.plot_width = new_case_ind.plot_width = 1000
+tot_case_ind.plot_width = new_case_ind.plot_width = 1300
 
 # Definisikan dua panel berisi total kasus dan kasus baru
 tot_case_ind_panel = Panel(child=tot_case_ind, title='Total Kasus')
