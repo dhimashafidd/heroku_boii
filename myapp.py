@@ -135,11 +135,17 @@ sulawesi = sulawesi.groupby(['Date']).sum().reset_index()
 sulawesi['Island'] = 'Sulawesi'
 sulawesi_case = ColumnDataSource(sulawesi)
 
-# case Papua dan Maluku 
+# case Papua 
 papua = df2[(df2['Island'] == 'Papua') | (df2['Island'] == 'Maluku')]
 papua = papua.groupby(['Date']).sum().reset_index()
-papua['Island'] = 'Papua dan Maluku'
+papua['Island'] = 'Papua'
 papua_case = ColumnDataSource(papua)
+
+# case Maluku 
+maluku =  (df2['Island'] == 'Maluku')]
+maluku = maluku.groupby(['Date']).sum().reset_index()
+maluku['Island'] = 'Maluku'
+maluku_case = ColumnDataSource(maluku)
 
 # Definisikan figure untuk dijadikan sebagai diagram 
 tot_case = figure(x_axis_type='datetime',
@@ -161,7 +167,7 @@ tot_case.line('Date', 'TotalCases',
               color='green', legend_label='Total Kasus Pulau Sumatera',
               source=sumatera_case)
 tot_case.line('Date', 'TotalCases',
-              color='blue', legend_label='Total Kasus Pulau Jawa dan Nusa Tenggara',
+              color='blue', legend_label='Total Kasus Pulau Jawa',
               source=jawa_case)
 tot_case.line('Date', 'TotalCases',
               color='orange', legend_label='Total Kasus Pulau Nusa Tenggara',
@@ -173,14 +179,17 @@ tot_case.line('Date', 'TotalCases',
               color='yellow', legend_label='Total Kasus Pulau Sulawesi',
               source=sulawesi_case)
 tot_case.line('Date', 'TotalCases',
-              color='purple', legend_label='Total Kasus Pulau Papua dan Maluku',
+              color='purple', legend_label='Total Kasus Pulau Papua',
               source=papua_case)
+tot_case.line('Date', 'TotalCases',
+              color='pink', legend_label='Total Kasus Pulau Maluku',
+              source=maluku_case)              
 
 new_case.line('Date', 'NewCases',
               color='green', legend_label='Kasus Baru Pulau Sumatera',
               source=sumatera_case)
 new_case.line('Date', 'NewCases',
-              color='blue', legend_label='Kasus Baru Pulau Jawa dan Nusa Tenggara',
+              color='blue', legend_label='Kasus Baru Pulau Jawa',
               source=jawa_case)
 new_case.line('Date', 'NewCases',
               color='orange', legend_label='Kasus Baru Pulau Nusa Tenggara',
@@ -192,8 +201,11 @@ new_case.line('Date', 'NewCases',
               color='yellow', legend_label='Kasus Baru Pulau Sulawesi',
               source=sulawesi_case)
 new_case.line('Date', 'NewCases',
-              color='purple', legend_label='Kasus Baru Pulau Papua dan Maluku',
+              color='purple', legend_label='Kasus Baru Pulau Papua',
               source=papua_case)
+new_case.line('Date', 'NewCases',
+              color='pink', legend_label='Kasus Baru Pulau Maluku',
+              source=maluku_case)
 
 # Definisikan legend dengan lokasi atas kiri
 tot_case.legend.location = 'top_left'
