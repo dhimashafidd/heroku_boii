@@ -237,7 +237,8 @@ spacing = Div(text=space)
 
 # Lakukan running untuk hasil akhir
 curdoc().add_root(column(sup_title1, tabs, spacing, sup_title2, tabs2))
-                  title='Kasus Baru', x_axis_label='Tanggal', y_axis_label='Kasus Baru')
+                  title='Kasus Baru', x_axis_label='Tanggal', 
+                  y_axis_label='Kasus Baru')
 
 # Definisikan y-axis
 tot_case_ind.yaxis.formatter = NumeralTickFormatter(format="00")
