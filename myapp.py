@@ -108,14 +108,14 @@ tabs = Tabs(tabs=[tot_case_ind_panel, new_case_ind_panel])
 # case Pulau Jawa 
 jawa = df2[(df2['Island'] == 'Jawa') 
 jawa = jawa.groupby(['Date']).sum().reset_index()
-jawa['Island'] = 'Jawa '
+jawa['Island'] = 'Jawa'
 jawa_case = ColumnDataSource(jawa)
 
 # case Nusa Tenggara
 nusatenggara = df2[df2['Island'] == 'nusatenggara']
 nusatenggara = nusatenggara.groupby(['Date']).sum().reset_index()
 nusatenggara['Island'] = 'Nusa Tenggara'
-
+nusatenggara_case=ColumnDataSource(nusatenggara)
 
 # case Sumatera
 sumatera = df2[df2['Island'] == 'Sumatera']
@@ -136,7 +136,7 @@ sulawesi['Island'] = 'Sulawesi'
 sulawesi_case = ColumnDataSource(sulawesi)
 
 # case Papua 
-papua = df2[(df2['Island'] == 'Papua') | (df2['Island'] == 'Maluku')]
+papua = df2[(df2['Island'] == 'Papua')
 papua = papua.groupby(['Date']).sum().reset_index()
 papua['Island'] = 'Papua'
 papua_case = ColumnDataSource(papua)
